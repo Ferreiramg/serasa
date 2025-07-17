@@ -1,0 +1,78 @@
+{
+    "name": "ferreiramg/serasa",
+    "description": "Laravel package for consuming Tecnospeed Serasa API - Official API v2 integration with async consultation support",
+    "type": "library",
+    "license": "MIT",
+    "keywords": [
+        "laravel",
+        "tecnospeed",
+        "serasa",
+        "credit-check",
+        "cpf",
+        "cnpj",
+        "consultation",
+        "api"
+    ],
+    "homepage": "https://github.com/Ferreiramg/serasa",
+    "support": {
+        "issues": "https://github.com/Ferreiramg/serasa/issues",
+        "source": "https://github.com/Ferreiramg/serasa"
+    },
+    "authors": [
+        {
+            "name": "Ferreiramg",
+            "email": "your-email@example.com",
+            "homepage": "https://github.com/Ferreiramg",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^8.2",
+        "illuminate/support": "^12.0",
+        "illuminate/http": "^12.0"
+    },
+    "require-dev": {
+        "guzzlehttp/guzzle": "^7.0",
+        "larastan/larastan": "^3.5",
+        "laravel/pint": "^1.23",
+        "orchestra/testbench": "^10.0",
+        "pestphp/pest": "^3.8",
+        "pestphp/pest-plugin-laravel": "^3.0",
+        "phpstan/phpstan": "^2.1",
+        "phpstan/phpstan-strict-rules": "^2.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Ferreiramg\\TecnospeedSerasa\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Ferreiramg\\TecnospeedSerasa\\Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/pest",
+        "test-coverage": "vendor/bin/pest --coverage --min=70",
+        "analyse": "vendor/bin/phpstan analyse",
+        "format": "vendor/bin/pint"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Ferreiramg\\TecnospeedSerasa\\TecnospeedSerasaServiceProvider"
+            ],
+            "aliases": {
+                "TecnospeedSerasa": "Ferreiramg\\TecnospeedSerasa\\Facades\\TecnospeedSerasa"
+            }
+        }
+    },
+    "config": {
+        "sort-packages": true,
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}
