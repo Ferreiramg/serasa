@@ -96,8 +96,9 @@ class TecnospeedSerasaService
                 'Accept' => 'application/json',
             ];
 
-            $response = $this->client->get($this->config['endpoints']['consulta_protocolo'].'/'.$protocolo, [
+            $response = $this->client->get($this->config['endpoints']['consulta_protocolo'], [
                 'headers' => $headers,
+                'query' => ['protocolo' => $protocolo],
             ]);
 
             $data = json_decode($response->getBody()->getContents(), true);

@@ -37,7 +37,7 @@ return [
 
     'endpoints' => [
         'consulta_assincrona' => '/consultas/assincrona',
-        'consulta_protocolo' => '/consultas',
+        'consulta_protocolo' => '/consultas/assincrona',
     ],
 
     'tipos_consulta' => [
