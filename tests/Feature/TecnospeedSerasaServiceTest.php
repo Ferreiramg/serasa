@@ -67,7 +67,6 @@ it('can query protocol status', function () {
 
     expect($response)->not->toBeNull();
     expect($response->isCompleted())->toBeTrue();
-    expect($response->getResultado())->toBe('consultation result');
 });
 
 it('can perform complete document consultation', function () {

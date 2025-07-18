@@ -55,7 +55,6 @@ class TecnospeedSerasaService
             $data = json_decode($response->getBody()->getContents(), true);
 
             return new ConsultationResponse($data);
-
         } catch (GuzzleException $e) {
             $this->handleGuzzleException($e);
         }
@@ -82,7 +81,7 @@ class TecnospeedSerasaService
     /**
      * Consultar protocolo para obter resultado
      */
-    public function consultarProtocolo(string $protocolo): ConsultationResponse
+    public function consultarProtocolo(string $protocolo): string|ConsultationResponse
     {
         $this->validateCredentials();
 
@@ -101,10 +100,18 @@ class TecnospeedSerasaService
                 'query' => ['protocolo' => $protocolo],
             ]);
 
-            $data = json_decode($response->getBody()->getContents(), true);
+            // caso sucesso, retorna o conteúdo diretamente como HTML
+            if ($response->getStatusCode() === 200) {
+                $data = [
+                    'html' => $response->getBody()->getContents(),
+                    'status' => 'concluido',
+                    'protocolo' => $protocolo,
+                ];
+            } else {
+                $data = json_decode($response->getBody()->getContents(), true);
+            }
 
             return new ConsultationResponse($data);
-
         } catch (GuzzleException $e) {
             $this->handleGuzzleException($e);
         }
